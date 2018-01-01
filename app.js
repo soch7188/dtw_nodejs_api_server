@@ -1,6 +1,5 @@
 var express = require('express'),
     app = express(),
-    router = express.Router(),
     mysql = require('mysql'),
     http = require('http'),
     port = process.env.PORT || 3000
@@ -8,14 +7,18 @@ var express = require('express'),
 
 var con = mysql.createConnection({
     host: "fypinstance.csbqmphhsfqb.ap-northeast-2.rds.amazonaws.com",
+    port: 3306,
     database: "dtw",
     user: "password",
     password: "password"
 });
 
 con.connect(function(err) {
-    if (err) throw err;
-    console.log("Connected!");
+    if (!err){
+	console.log("Connected! \n\n");
+    } else {
+	console.log("Error connecting database ... \n\n");
+    }
 });
 
 
